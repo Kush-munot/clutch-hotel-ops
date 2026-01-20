@@ -130,7 +130,7 @@ export default function Analytics({ rooms, bookings }: AnalyticsProps) {
                     <div className="space-y-4">
                         {Object.entries(revenueByType).map(([type, revenue]) => {
                             const typeRooms = rooms.filter(r => r.type === type)
-                            const percentage = ((revenue / totalRevenue) * 100).toFixed(1)
+                            const percentage = (((revenue as number) / totalRevenue) * 100).toFixed(1)
                             return (
                                 <div key={type}>
                                     <div className="flex items-center justify-between mb-2">
@@ -141,7 +141,7 @@ export default function Analytics({ rooms, bookings }: AnalyticsProps) {
                                             </span>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <span className="font-semibold">${revenue.toLocaleString()}</span>
+                                            <span className="font-semibold">${(revenue as number).toLocaleString()}</span>
                                             <span className="text-sm text-slate-400">{percentage}%</span>
                                         </div>
                                     </div>

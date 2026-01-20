@@ -59,7 +59,7 @@ export default function RoomManagement({ rooms: initialRooms, hotelId }: RoomMan
             toast.success('Room status updated')
         } catch (error) {
             console.error('Error updating status:', error)
-            toast.error(error?.message || 'Failed to update status')
+            toast.error((error as any)?.message || 'Failed to update status')
         }
     }
 

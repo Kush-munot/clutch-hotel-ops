@@ -94,7 +94,7 @@ export function RoomGrid({ hotelId }: RoomGridProps) {
                     ...room,
                     current_guest: booking
                         ? {
-                            name: booking.guests?.name || 'Unknown',
+                            name: (booking.guests as any)?.name || 'Unknown',
                             checkout_date: booking.check_out,
                         }
                         : undefined,
