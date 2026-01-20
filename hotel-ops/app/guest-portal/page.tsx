@@ -72,7 +72,6 @@ export default function GuestPortalPage() {
                 .eq('guest_id', guestSession.guest_id)
                 .order('check_in', { ascending: false })
 
-            console.log('Bookings data:', { bookings, error, guest_id: guestSession.guest_id })
 
             if (error) {
                 console.error('Bookings error:', error)
@@ -87,7 +86,6 @@ export default function GuestPortalPage() {
                 new Date(b.check_in) > now && b.status === 'confirmed'
             )
 
-            console.log('Booking status:', { active, upcoming, now, bookingsCount: bookings?.length })
 
             setActiveBooking(active || null)
             setUpcomingBooking(upcoming || null)

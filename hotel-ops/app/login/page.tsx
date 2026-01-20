@@ -55,7 +55,6 @@ export default function LoginPage() {
                 .select('*, bookings(*, rooms(room_number, hotel_id))')
                 .eq('guest_code', paddedCode)
 
-            console.log('Guest lookup:', { paddedCode, guests, error })
 
             if (error || !guests || guests.length === 0) {
                 toast.error('Invalid guest code', {

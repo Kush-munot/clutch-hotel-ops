@@ -48,7 +48,6 @@ export function ActivityFeed({ hotelId }: ActivityFeedProps) {
                     filter: `hotel_id=eq.${hotelId}`,
                 },
                 (payload) => {
-                    console.log('New activity:', payload)
                     handleNewActivity(payload.new as ActivityLog)
                 }
             )

@@ -51,7 +51,6 @@ export function RoomGrid({ hotelId }: RoomGridProps) {
                     filter: `hotel_id=eq.${hotelId}`,
                 },
                 (payload) => {
-                    console.log('Room change received:', payload)
                     fetchRooms()
                 }
             )

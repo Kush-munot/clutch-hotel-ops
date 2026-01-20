@@ -64,12 +64,10 @@ export default function TaskList({ rooms: initialRooms, hotelId }: TaskListProps
             .in('status', ['pending', 'in_progress'])
             .order('created_at', { ascending: false })
 
-        console.log('Service requests loaded:', { data, error })
 
         if (!error && data) {
             // Filter by hotel_id from rooms
             const filteredRequests = data.filter(req => req.rooms?.hotel_id === hotelId)
-            console.log('Filtered requests:', filteredRequests)
             setServiceRequests(filteredRequests)
         }
     }

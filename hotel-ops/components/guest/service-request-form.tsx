@@ -72,7 +72,6 @@ export default function ServiceRequestForm({
                 })
                 .select()
 
-            console.log('Service request result:', { serviceData, requestError })
 
             if (requestError) {
                 console.error('Service request error details:', requestError)
@@ -92,7 +91,6 @@ export default function ServiceRequestForm({
                 })
                 .select()
 
-            console.log('Task result:', { taskData, taskError })
 
             if (taskError) {
                 console.error('Task error details:', taskError)
