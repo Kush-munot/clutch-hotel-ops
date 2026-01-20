@@ -182,28 +182,6 @@ export default function Settings({ user, userData, hotel: initialHotel }: Settin
                     </form>
                 </CardContent>
             </Card>
-
-            {/* Account Info */}
-            <Card className="border-slate-800 bg-slate-900">
-                <CardHeader>
-                    <CardTitle>Account Information</CardTitle>
-                    <CardDescription>Your account details</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-2 text-sm">
-                    <div className="flex justify-between py-2 border-b border-slate-800">
-                        <span className="text-slate-400">User ID</span>
-                        <span className="font-mono text-xs">{user.id}</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-slate-800">
-                        <span className="text-slate-400">Hotel ID</span>
-                        <span className="font-mono text-xs">{hotel.id}</span>
-                    </div>
-                    <div className="flex justify-between py-2">
-                        <span className="text-slate-400">Account Created</span>
-                        <span>{new Date(user.created_at).toLocaleDateString()}</span>
-                    </div>
-                </CardContent>
-            </Card>
         </div>
     )
 }

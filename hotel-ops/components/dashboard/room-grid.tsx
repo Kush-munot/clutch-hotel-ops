@@ -185,13 +185,13 @@ export function RoomGrid({ hotelId }: RoomGridProps) {
     return (
         <div className="space-y-3 sm:space-y-4">
             {/* Filter Tabs */}
-            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+            <div className="flex gap-2 overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 {Object.entries(statusCounts).map(([status, count]) => (
                     <button
                         key={status}
                         onClick={() => setFilter(status)}
                         className={cn(
-                            'flex items-center gap-1.5 sm:gap-2 rounded-lg border px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0',
+                            'flex items-center gap-1.5 sm:gap-2 rounded-lg border px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap shrink-0',
                             filter === status
                                 ? 'border-green-500 bg-green-500/10 text-green-400'
                                 : 'border-slate-700 bg-slate-900 text-slate-400 hover:border-slate-600 hover:text-white'
@@ -220,7 +220,7 @@ export function RoomGrid({ hotelId }: RoomGridProps) {
                                 config.color
                             )}
                         >
-                            <CardHeader className="pb-2 sm:pb-3 p-3 sm:p-6">
+                            <CardHeader className="sm:pb-3 sm:p-6">
                                 <div className="flex items-center justify-between">
                                     <CardTitle className="text-base sm:text-lg font-bold text-white">
                                         {room.room_number}
@@ -228,7 +228,7 @@ export function RoomGrid({ hotelId }: RoomGridProps) {
                                     <Icon className={cn('h-4 w-4 sm:h-5 sm:w-5', config.iconColor)} />
                                 </div>
                             </CardHeader>
-                            <CardContent className="space-y-1.5 sm:space-y-2 p-3 pt-0 sm:p-6 sm:pt-0">
+                            <CardContent className="space-y-1.5 sm:space-y-2 pt-0 sm:p-6 sm:pt-0">
                                 <div className="text-xs text-slate-400 capitalize">
                                     {room.type}
                                 </div>

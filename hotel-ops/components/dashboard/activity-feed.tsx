@@ -178,7 +178,7 @@ export function ActivityFeed({ hotelId }: ActivityFeedProps) {
             </CardHeader>
             <CardContent className="p-3 sm:p-6">
                 <ScrollArea className="h-[300px] sm:h-[400px]" ref={scrollRef}>
-                    <div className="space-y-2 sm:space-y-4 pr-2 sm:pr-4">
+                    <div className="space-y-2 sm:space-y-4 pr-4">
                         {activities.length === 0 ? (
                             <div className="flex h-64 items-center justify-center">
                                 <p className="text-xs sm:text-sm text-slate-400">No recent activity</p>
@@ -191,12 +191,12 @@ export function ActivityFeed({ hotelId }: ActivityFeedProps) {
                                 return (
                                     <div
                                         key={activity.id}
-                                        className="flex gap-2 sm:gap-3 rounded-lg border border-slate-800 bg-slate-950 p-2 sm:p-3 transition-colors hover:border-slate-700"
+                                        className="flex gap-2 sm:gap-3 rounded-lg border border-slate-800 bg-slate-950 p-2 sm:p-3 transition-colors hover:border-slate-700 w-full"
                                     >
-                                        <div className={`mt-0.5 sm:mt-1 ${color}`}>
+                                        <div className={`mt-0.5 sm:mt-1 flex-shrink-0 ${color}`}>
                                             <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                                         </div>
-                                        <div className="flex-1 space-y-0.5 sm:space-y-1 min-w-0">
+                                        <div className="flex-1 space-y-0.5 sm:space-y-1 min-w-0 max-w-full">
                                             <div className="flex items-start justify-between gap-2">
                                                 <p className="text-xs sm:text-sm font-medium text-white truncate">
                                                     {activity.action_type.replace(/_/g, ' ')}
@@ -207,7 +207,7 @@ export function ActivityFeed({ hotelId }: ActivityFeedProps) {
                                                     }).replace('about ', '')}
                                                 </span>
                                             </div>
-                                            <p className="text-[10px] sm:text-xs text-slate-400 line-clamp-2">
+                                            <p className="text-[10px] sm:text-xs text-slate-400 break-words pr-1">
                                                 {activity.description}
                                             </p>
                                             {activity.users && (

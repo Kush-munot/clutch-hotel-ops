@@ -60,17 +60,6 @@ export function Header({ userName, userRole, hotelName, onMenuClick }: HeaderPro
 
             {/* User Menu */}
             <div className="flex items-center gap-4">
-                {/* Theme Toggle */}
-                <button
-                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                    className="rounded-lg p-2 text-slate-400 hover:bg-slate-800 hover:text-white"
-                >
-                    {theme === 'dark' ? (
-                        <Sun className="h-5 w-5" />
-                    ) : (
-                        <Moon className="h-5 w-5" />
-                    )}
-                </button>
 
                 {/* User Dropdown */}
                 <DropdownMenu>
@@ -90,7 +79,7 @@ export function Header({ userName, userRole, hotelName, onMenuClick }: HeaderPro
                     <DropdownMenuContent align="end" className="w-56">
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => router.push('/dashboard/settings')}>
                             <User className="mr-2 h-4 w-4" />
                             Profile
                         </DropdownMenuItem>
