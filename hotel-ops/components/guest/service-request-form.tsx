@@ -58,6 +58,7 @@ export default function ServiceRequestForm({
         setLoading(true)
 
         try {
+
             // Create service request
             const { data: serviceData, error: requestError } = await supabase
                 .from('service_requests')
@@ -70,12 +71,15 @@ export default function ServiceRequestForm({
                     priority,
                     status: 'pending',
                 })
-                .select()
+                .select();
 
-
-            if (requestError) {
-                console.error('Service request error details:', requestError)
-                throw requestError
+            if (!serviceData || serviceData.length === 0) {
+                if (requestError) {
+                    throw requestError;
+                }
+            } else if (requestError) {
+                // Data present but error exists
+                console.warn('Service request succeeded but error returned:', requestError);
             }
 
             // Create corresponding task for staff
@@ -84,17 +88,21 @@ export default function ServiceRequestForm({
                 .insert({
                     hotel_id: hotelId,
                     room_id: roomId,
-                    task_type: requestType === 'housekeeping' ? 'cleaning' : 'maintenance',
+                    title: SERVICE_TYPES.find(t => t.value === requestType)?.label || 'Guest Request',
                     description: `Guest Request: ${SERVICE_TYPES.find(t => t.value === requestType)?.label}${description ? ` - ${description}` : ''}`,
                     priority: priority === 'urgent' || priority === 'high' ? 'high' : 'normal',
                     status: 'pending',
                 })
-                .select()
+                .select();
 
-
-            if (taskError) {
-                console.error('Task error details:', taskError)
-                throw taskError
+            if (!taskData || taskData.length === 0) {
+                if (taskError) {
+                    console.error('Task error details:', taskError);
+                    throw taskError;
+                }
+            } else if (taskError) {
+                // Data present but error exists
+                console.warn('Task insert succeeded but error returned:', taskError);
             }
 
             // Log activity
@@ -107,10 +115,6 @@ export default function ServiceRequestForm({
                     room_id: roomId,
                 })
 
-            if (activityError) {
-                console.error('Activity log error:', activityError)
-                // Don't throw - activity log is not critical
-            }
 
             toast.success('Service request submitted', {
                 description: 'Our staff will attend to your request shortly',
