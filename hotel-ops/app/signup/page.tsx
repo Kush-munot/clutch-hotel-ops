@@ -87,7 +87,7 @@ export default function SignupPage() {
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="manager@hotel.com"
+                                placeholder="email address"
                                 required
                                 disabled={loading}
                             />

@@ -111,7 +111,7 @@ export default function LoginPage() {
                                         type="email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        placeholder="manager@hotel.com"
+                                        placeholder="Enter email"
                                         required
                                         disabled={loading}
                                     />
