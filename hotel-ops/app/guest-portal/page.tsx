@@ -121,22 +121,6 @@ export default function GuestPortalPage() {
         router.push('/login')
     }
 
-    const handleCheckOut = async () => {
-        if (!activeBooking) return
-
-        const { error } = await supabase
-            .from('bookings')
-            .update({ status: 'checked_out' })
-            .eq('id', activeBooking.id)
-
-        if (error) {
-            toast.error('Failed to check out')
-        } else {
-            toast.success('Checked out successfully')
-            setActiveBooking(null)
-            loadGuestData()
-        }
-    }
 
     const getStatusColor = (status: string) => {
         switch (status) {
@@ -211,9 +195,7 @@ export default function GuestPortalPage() {
                                     <BellRing className="mr-2 h-4 w-4" />
                                     Request Service
                                 </Button>
-                                <Button variant="outline" onClick={handleCheckOut}>
-                                    Check Out
-                                </Button>
+                            
                             </div>
                         </CardContent>
                     </Card>
